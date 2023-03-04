@@ -17,7 +17,7 @@ class OperacionesBBDD {
     private $servidor;
     private $pdo;
 
-    public function __construct() {
+    public function __construct() {    
         $DBConfig = $this->leer_configuracion(__DIR__ . '\..\..\ConfigBBDD\configuracion.xml', __DIR__ . '\..\..\ConfigBBDD\configuracion.xsd');
 
         $this->nombreBBDD = $DBConfig['nombreBD'];
@@ -76,11 +76,10 @@ class OperacionesBBDD {
         unset($this->pdo);
     }
 
-    public function __toString() {
-        return "eyy";
+    public function __toString() {       
     }
 
-    public function borrar_familiares($idEmpleado) {
+    public function borrar_familiares(int $idEmpleado) {
         $stmt = "DELETE FROM familiares WHERE EMPLEADO = :id ";
 
         try {
@@ -95,7 +94,7 @@ class OperacionesBBDD {
         }
     }
 
-    public function buscar_datos_empleados($id) {
+    public function buscar_datos_empleados( int $id) {
         $stmnt = "SELECT * FROM empleados WHERE ID_EMPLEADO = ?";
         if ($data = $this->pdo->prepare($stmnt)) {
             $data->bindParam(1, $id, \PDO::PARAM_INT);
@@ -114,7 +113,7 @@ class OperacionesBBDD {
         return($empleado);
     }
 
-    public function buscarFamiliar($id) {
+    public function buscarFamiliar( int $id) {
 
         $stmnt = "SELECT * FROM familiares WHERE EMPLEADO = ?";
         $familiares = array();
@@ -137,7 +136,7 @@ class OperacionesBBDD {
         return $familiares;
     }
 
-    public function buscarDepartamentos($id) {
+    public function buscarDepartamentos( int $id) {
         $stmnt = "SELECT NUMERO, NOMBRE FROM departamentos WHERE NUMERO = ?";
         $departamento = null;
         if ($data = $this->pdo->prepare($stmnt)) {
