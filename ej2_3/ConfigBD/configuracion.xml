@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuracion>
+    <servidor>localhost</servidor>
+	<nombre>examen</nombre>
+    <usuario>
+        <nombreUser>root</nombreUser>
+        <clave></clave> 
+        <rol>estandar</rol>
+    </usuario>
+       
+</configuracion>
